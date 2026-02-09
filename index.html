@@ -148,6 +148,31 @@
       box-shadow: 0 0 30px rgba(255, 122, 0, 0.25);
       border-color: var(--neon);
     }
+    .card:hover {
+  border-color: var(--neon);
+  box-shadow: 
+    0 0 15px var(--neon),
+    0 0 30px var(--neon-soft),
+    0 0 45px var(--neon-soft);
+  transform: translateY(-10px) scale(1.03);
+}
+.typing {
+  width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid var(--neon);
+  font-size: 1.1rem;
+  animation: type 4s steps(30) forwards, blink 0.7s infinite step-end;
+  color: var(--text-dim);
+}
+
+@keyframes type {
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}
 
     .card img {
       width: 100%;
@@ -227,6 +252,8 @@
     <header>
       <h1>Ramisha Hossain</h1>
       <p class="subtitle">Certificate Corner</p>
+      <p class="typing">Showcasing my journey so far…</p>
+
     </header>
 
     <section class="bio-card">
