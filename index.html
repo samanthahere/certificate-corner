@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Certificate Corner - Ramisha Hossain</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --card: #121212;
+      --neon: #ff7a00;
+      --neon-soft: rgba(255, 122, 0, 0.5);
+      --text: #ffffff;
+      --text-dim: #aaaaaa;
+      --border: #1f1f1f;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #111, #000);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      color: var(--neon);
+      text-shadow: 0 0 15px var(--neon-soft);
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      margin-top: 0.5rem;
+      color: var(--text-dim);
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .bio-card {
+      margin-top: 3rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 16px;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+      box-shadow: 0 0 30px rgba(255, 122, 0, 0.1);
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--neon);
+      box-shadow: 0 0 20px var(--neon-soft);
+      flex-shrink: 0;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bio-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .bio-text p {
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 700px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      background: #0f0f0f;
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .stat:hover {
+      border-color: var(--neon);
+      box-shadow: 0 0 15px var(--neon-soft);
+      transform: translateY(-4px);
+    }
+
+    .stat span {
+      display: block;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    .certificates {
+      margin-top: 4rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 30px rgba(255, 122, 0, 0.25);
+      border-color: var(--neon);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-content {
+      padding: 1.2rem;
+    }
+
+    .card-content h3 {
+      color: var(--neon);
+      margin-bottom: 0.3rem;
+    }
+
+    .card-content p {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .coming-soon {
+      margin-top: 4rem;
+      text-align: center;
+      padding: 3rem 2rem;
+      border: 1px dashed var(--neon);
+      border-radius: 16px;
+      color: var(--text-dim);
+      box-shadow: 0 0 20px rgba(255, 122, 0, 0.15);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 0 1rem;
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+      border: 2px solid var(--neon);
+      box-shadow: 0 0 40px rgba(255, 122, 0, 0.6);
+    }
+
+    .close {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      font-size: 2rem;
+      color: var(--neon);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Ramisha Hossain</h1>
+      <p class="subtitle">Certificate Corner</p>
+    </header>
+
+    <section class="bio-card">
+      <div class="avatar">
+        <img src="profile-pic.jpg" alt="Ramisha Hossain">
+      </div>
+      <div class="bio-text">
+        <h2>Frontend Software Engineer</h2>
+        <p>
+          CSE student at BRAC University and Viqarunnisa Noon College. 
+          Passionate about clean UI, smooth UX, and building modern web apps. 
+          Turning ideas into pixels and logic into products.
+        </p>
+
+        <div class="stats">
+          <div class="stat">
+            <strong>Education</strong>
+            <span>BRAC University & Viqarunnisa Noon College</span>
+          </div>
+          <div class="stat">
+            <strong>Department</strong>
+            <span>Computer Science & Engineering (CSE)</span>
+          </div>
+          <div class="stat">
+            <strong>Certificates</strong>
+            <span>6 Achievements</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="certificates">
+      <h2 style="color: var(--neon); text-align:center;">My Certificates</h2>
+
+      <div class="grid">
+        <div class="card">
+          <img src="img1.jpg" alt="Graphics Design">
+          <div class="card-content">
+            <h3>Graphics Design</h3>
+            <p>Creative design fundamentals and visual communication.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="img2.jpg" alt="Generative AI">
+          <div class="card-content">
+            <h3>Generative AI</h3>
+            <p>Basics of modern AI tools and prompt-driven workflows.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="img3.jpg" alt="Web Development">
+          <div class="card-content">
+            <h3>Complete Web Development</h3>
+            <p>HTML, CSS, JavaScript, React and full-stack concepts.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="img4.jpg" alt="JavaScript & React">
+          <div class="card-content">
+            <h3>JavaScript & React</h3>
+            <p>Frontend fundamentals and component-based UI building.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="img5.jpg" alt="Next Gen Ideathon">
+          <div class="card-content">
+            <h3>Next Generation Ideathon</h3>
+            <p>Innovation, teamwork, and idea pitching.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="img6.jpg" alt="HTML">
+          <div class="card-content">
+            <h3>Introduction to HTML</h3>
+            <p>Core web structure and semantic markup.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="coming-soon">
+        🚀 More certificates loading soon. Growth arc in progress.
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Ramisha Hossain — All Rights Reserved
+    </footer>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <span class="close" id="closeBtn">✕</span>
+    <img id="modalImg" />
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.getElementById("closeBtn");
+
+    document.querySelectorAll(".card img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.classList.add("active");
+        modalImg.src = img.src;
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    });
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+    });
+  </script>
+
+</body>
+</html>
